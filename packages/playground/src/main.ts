@@ -12,6 +12,7 @@ const env = import.meta.env;
 
 const $ = <T extends string>(sel: T) => document.querySelector(sel);
 let $whiteboard = $("#whiteboard")! as HTMLDivElement;
+let $info = $('#info')! as HTMLDivElement;
 
 let sdk = new WhiteWebSdk({ appIdentifier: env.VITE_APPID });
 WindowManager.register(NetlessAppMediaPlayer);
@@ -26,4 +27,20 @@ sdk.joinRoom({
 
     room.setScenePath('/init');
     WindowManager.mount(room, $whiteboard, undefined);
+
+    $info.textContent = "loaded.";
+
+    $('#add-app')!.addEventListener('click', () => {
+        manager.addApp({
+            kind: NetlessAppMediaPlayer.kind,
+            options: {
+                scenePath: '/init',
+                title: 'test'
+            },
+            attributes: {
+                src: "https://beings.oss-cn-hangzhou.aliyuncs.com/test/aaa59a55-81ff-45e8-8185-fd72c695def4/1606277539701637%E7%9A%84%E5%89%AF%E6%9C%AC.mp4",
+                type: 'video'
+            }
+        });
+    });
 });

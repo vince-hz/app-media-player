@@ -44,23 +44,9 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
         }
 
         const player = new MediaPlayer();
-        player.render(context);
+        context.getBox().mountContent(player.render(attrs));
 
-        // const player = new MediaPlayer({
-        //     box,
-        //     value: attrs.value,
-        //     inc: (value) => context.updateAttributes(["value"], value + 1),
-        //     dec: (value) => context.updateAttributes(["value"], value - 1),
-        // });
-
-        // context.emitter.on("attributesUpdate", attrs => {
-        //     console.log("attributesUpdate", attrs);
-        //     if (attrs) {
-        //         player.setValue((attrs as any).value);
-        //     }
-        // });
-
-        // (window as any).player = player;
+        (window as any).player = player;
     },
 };
 

@@ -1,3 +1,5 @@
+export type Ref = (el: HTMLElement | null) => void;
+
 export type Props = Record<string, any>;
 
 export function isProps(o: any): o is Props {
@@ -10,7 +12,9 @@ export function h(tag: string, props: Props | null = {}, ...children: (string | 
     const dom = document.createElement(tag);
     for (let name in props) {
         const value = props[name];
-        if (name === "style" && isProps(value)) {
+        if (name === "ref") {
+            (value as Ref)(dom);
+        } else if (name === "style" && isProps(value)) {
             for (const k in value) (dom as any)[name][k] = value[k] || "";
         } else if (name.startsWith("on")) {
             name = name.slice(2).toLowerCase();
