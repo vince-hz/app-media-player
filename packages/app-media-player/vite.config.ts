@@ -5,6 +5,10 @@ export default defineConfig(({ command, mode }) => {
     const isProd = mode === "production";
 
     return {
+        esbuild: {
+            jsxFactory: "h"
+        },
+
         build: {
             lib: {
                 entry: path.resolve(__dirname, "src/index.ts"),

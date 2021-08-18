@@ -8,6 +8,8 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "removeComments": false,
+        "jsx": "preserve",
+        "jsxFactory": "h",
         "lib": ["ESNext", "DOM"],
         "types": ["vite/client"],
         "rootDir": ".",

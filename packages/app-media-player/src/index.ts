@@ -43,22 +43,24 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
             throw new Error("[MediaPlayer]: Missing initial attributes.");
         }
 
-        const player = new MediaPlayer({
-            box,
-            value: attrs.value,
-            inc: (value) => context.updateAttributes(["value"], value + 1),
-            dec: (value) => context.updateAttributes(["value"], value - 1),
-        });
-        player.mount();
+        const player = new MediaPlayer();
+        player.render(context);
 
-        context.emitter.on("attributesUpdate", attrs => {
-            console.log("attributesUpdate", attrs);
-            if (attrs) {
-                player.setValue((attrs as any).value);
-            }
-        });
+        // const player = new MediaPlayer({
+        //     box,
+        //     value: attrs.value,
+        //     inc: (value) => context.updateAttributes(["value"], value + 1),
+        //     dec: (value) => context.updateAttributes(["value"], value - 1),
+        // });
 
-        (window as any).player = player;
+        // context.emitter.on("attributesUpdate", attrs => {
+        //     console.log("attributesUpdate", attrs);
+        //     if (attrs) {
+        //         player.setValue((attrs as any).value);
+        //     }
+        // });
+
+        // (window as any).player = player;
     },
 };
 

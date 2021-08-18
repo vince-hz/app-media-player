@@ -12,7 +12,7 @@ export function h(tag: string, props: Props | null = {}, ...children: (string | 
         const value = props[name];
         if (name === "style" && isProps(value)) {
             for (const k in value) (dom as any)[name][k] = value[k] || "";
-        } else if (name[0] === "o" && name[1] === "n") {
+        } else if (name.startsWith("on")) {
             name = name.slice(2).toLowerCase();
             dom.addEventListener(name, value);
         } else if (name in dom) {
