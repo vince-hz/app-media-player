@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "ESNext",
+        "strict": true,
+        "skipLibCheck": true,
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "removeComments": false,
+        "lib": ["ESNext", "DOM"],
+        "types": ["vite/client"],
+        "rootDir": ".",
+        "baseUrl": ".",
+        "paths": {
+            "@netless/*": [
+                "packages/*/src",
+                "node_modules/@netless/*"
+            ]
+        }
+    },
+    "include": [
+        "packages/*/src"
+    ]
+}

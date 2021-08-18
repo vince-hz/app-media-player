@@ -1,0 +1,19 @@
+@import url(https://cdn.jsdelivr.net/npm/sanitize.css@12.0.1/evergreen.css);
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+#whiteboard {
+    flex-grow: 1;
+    border: 1px solid;
+}
+
+#info {
+    font-family: monospace;
+}

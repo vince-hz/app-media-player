@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "name": "playground",
+    "version": "0.1.0",
+    "scripts": {
+        "dev": "vite"
+    },
+    "dependencies": {
+        "@netless/window-manager": "^0.1.5",
+        "regenerator-runtime": "^0.13.9",
+        "white-web-sdk": "^2.13.17"
+    },
+    "devDependencies": {
+        "vite": "^2.5.0"
+    }
+}
