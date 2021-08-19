@@ -35,6 +35,8 @@ const defaultAttributes: State = {
 const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
     kind: "MediaPlayer",
     setup(context) {
+        context.getIsWritable();
+
         let box = context.getBox();
         let state = {
             ...defaultAttributes,

@@ -1,0 +1,44 @@
+$namespace: "netless-app-media-player-slider";
+
+.#{$namespace}-slider {
+    position: relative;
+    width: 100%;
+    outline: none;
+    &:hover .#{$namespace}-main {
+        transform: scaleY(2);
+    }
+}
+.#{$namespace}-track {
+    padding: 10px 0;
+    cursor: pointer;
+    outline: none;
+}
+.#{$namespace}-main {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 9999px;
+    position: absolute;
+    left: 0;
+    top: 8.5px;
+    transition: transform 0.1s;
+    outline: none;
+}
+.#{$namespace}-hover {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0.6);
+    transform-origin: 0 0;
+    z-index: 1;
+}
+.#{$namespace}-current {
+    position: absolute;
+    background-color: rgba(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0.13);
+    transform-origin: 0 0;
+    z-index: 2;
+}
