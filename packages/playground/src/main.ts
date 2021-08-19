@@ -33,10 +33,6 @@ sdk.joinRoom({
     $('#add-app')!.addEventListener('click', () => {
         manager.addApp({
             kind: NetlessAppMediaPlayer.kind,
-            options: {
-                scenePath: '/init',
-                title: 'test'
-            },
             attributes: {
                 src: "https://beings.oss-cn-hangzhou.aliyuncs.com/test/aaa59a55-81ff-45e8-8185-fd72c695def4/1606277539701637%E7%9A%84%E5%89%AF%E6%9C%AC.mp4",
                 type: 'video'

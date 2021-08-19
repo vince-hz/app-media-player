@@ -5,8 +5,8 @@
         "packages/*"
     ],
     "devDependencies": {
-        "@netless/window-manager": "^0.1.5",
-        "@types/node": "^16.6.1",
+        "@netless/window-manager": "^0.1.10",
+        "@types/node": "^16.6.2",
         "cross-env": "^7.0.3",
         "rimraf": "^3.0.2",
         "sass": "^1.38.0",

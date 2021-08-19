@@ -1,1 +1,14 @@
-@import "./MediaPlayer/style.scss";
+$namespace: "netless-app-media-player";
+
+.#{$namespace}-content {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    audio,
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

@@ -26,6 +26,7 @@
         "cleanup": "rimraf ./build"
     },
     "dependencies": {
-        "debounce-fn": "^5.0.0"
+        "debounce-fn": "^5.0.0",
+        "tsx-dom": "^1.2.0"
     }
 }

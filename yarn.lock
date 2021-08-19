@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@netless/app-docs-viewer@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.npmjs.org/@netless/app-docs-viewer/-/app-docs-viewer-0.1.5.tgz#fc407a841d653f7ba70874f8911edf3e49e28c94"
-  integrity sha512-e3XJV1wM2hppvmUg1ZabS7lMqj1hCXA/2Nk6Mz/P0Qns1o9l2Xlrwtjea3fAIZeMpjo5OMYeVXYUjlweOm+TJw==
+"@netless/app-docs-viewer@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.npmjs.org/@netless/app-docs-viewer/-/app-docs-viewer-0.1.9.tgz#867c9161f9ba5943df8f6707bc87d42e9ee2347e"
+  integrity sha512-ztXj5IE8WeqeRyp1EY/NaZHatjWdZQsdndOr+LscVJICO8pFNrmdpXipbL+HQqj28r4Lq22SbLta4tXwCJCzWQ==
   dependencies:
     debounce-fn "^5.0.0"
     vanilla-lazyload "^17.4.0"
@@ -15,20 +15,21 @@
   resolved "https://registry.npmjs.org/@netless/canvas-polyfill/-/canvas-polyfill-0.0.4.tgz#b5f28eefeb9c1e8ff8253fa1b044ccb1dc1b7c9c"
   integrity sha512-7NzsJrba0R/mq/l10SkIZQwbrNVJyPxZYrjK6xL3Ts732iWAVuS2UB0u3s6iGeUVcqV39A679yva8APWRl4M0A==
 
-"@netless/telebox-insider@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@netless/telebox-insider/-/telebox-insider-0.1.1.tgz#40e82fca89fe496b3ee41a6594097f5d1d1e445d"
-  integrity sha512-6itWF0gRDOY49uXW1EtpwhVOD6iM0g4FWQhVsVo8w/cJFDtv8lBonAh3aPyDEo8/TYnPMjt987PuZOGVyWe9/A==
+"@netless/telebox-insider@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/@netless/telebox-insider/-/telebox-insider-0.1.5.tgz#facb6fc40b9049f7c48b71344c4ff14f1e9fde1b"
+  integrity sha512-JzVS5bS+x/dujv/srchANKsIKmAzC19vay1s102iuF+HqWZfiBgEWpzK05NLRsvJRWo9qI6ZwHfptes+OEadsg==
   dependencies:
     eventemitter3 "^4.0.7"
+    stylefire "^7.0.3"
 
-"@netless/window-manager@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.npmjs.org/@netless/window-manager/-/window-manager-0.1.5.tgz#a3538d512efec75f686219e08f06bc7f94466840"
-  integrity sha512-YrFZfBrps20TIBV/e6LERThzKquz0YRzGnE4K3bNKdp/popG+CTMr59xptI/CzsDDAfPuZN+jOmjvfBcO2CT0Q==
+"@netless/window-manager@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.npmjs.org/@netless/window-manager/-/window-manager-0.1.10.tgz#7279d73cc97963bfb79a163f6ad6cfca99f79a59"
+  integrity sha512-FK568+dLZIrIs2YDoMibvcPcn2jeaehjCM3bto/+C2ia6+FlLmFjdjzlu4kPxIA2UGGZPS3IGcfScIe8XYL9Gw==
   dependencies:
-    "@netless/app-docs-viewer" "^0.1.5"
-    "@netless/telebox-insider" "^0.1.1"
+    "@netless/app-docs-viewer" "^0.1.9"
+    "@netless/telebox-insider" "^0.1.5"
     emittery "^0.9.2"
     localforage "^1.9.0"
     lodash-es "^4.17.21"
@@ -39,6 +40,22 @@
   version "1.6.15"
   resolved "https://registry.npmjs.org/@netless/xml-js/-/xml-js-1.6.15.tgz#46516d547b21149bcca732bb199d664791b3240a"
   integrity sha512-e0emMs7YtDB/ATUns1SJ61R9n9nfVvwwFodoc539Qt0ScksaCLCaFWgpEbLloj9sr60ry6Xd8QFHKULFIZB6zA==
+
+"@popmotion/easing@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@popmotion/easing/-/easing-1.0.2.tgz#17d925c45b4bf44189e5a38038d149df42d8c0b4"
+  integrity sha512-IkdW0TNmRnWTeWI7aGQIVDbKXPWHVEYdGgd5ZR4SH/Ty/61p63jCjrPxX1XrR7IGkl08bjhJROStD7j+RKgoIw==
+
+"@popmotion/popcorn@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.npmjs.org/@popmotion/popcorn/-/popcorn-0.4.4.tgz#a5f906fccdff84526e3fcb892712d7d8a98d6adc"
+  integrity sha512-jYO/8319fKoNLMlY4ZJPiPu8Ea8occYwRZhxpaNn/kZsK4QG2E7XFlXZMJBsTWDw7I1i0uaqyC4zn1nwEezLzg==
+  dependencies:
+    "@popmotion/easing" "^1.0.1"
+    framesync "^4.0.1"
+    hey-listen "^1.0.8"
+    style-value-types "^3.1.7"
+    tslib "^1.10.0"
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -98,10 +115,15 @@
   resolved "https://registry.npmjs.org/@types/long/-/long-4.0.1.tgz#459c65fa1867dafe6a8f322c4c51695663cc55e9"
   integrity sha512-5tXH6Bx/kNGd3MgffdmP4dy2Z+G4eaXw0SE81Tq3BNadtnMR5/ySMzX4SLEzHJzSmPNn4HIdpQsBvXMUykr58w==
 
-"@types/node@>=13.7.0", "@types/node@^16.6.1":
+"@types/node@>=13.7.0":
   version "16.6.1"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.6.1.tgz#aee62c7b966f55fc66c7b6dfa1d58db2a616da61"
   integrity sha512-Sr7BhXEAer9xyGuCN3Ek9eg9xPviCF2gfu9kTfuU2HkTVAMYSDeX40fvpmo72n5nansg3nsBjuQBrsS28r+NUw==
+
+"@types/node@^16.6.2":
+  version "16.6.2"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.6.2.tgz#331b7b9f8621c638284787c5559423822fdffc50"
+  integrity sha512-LSw8TZt12ZudbpHc6EkIyDM3nHVWKYrAvGy6EAJfNfjusbwnThqjqxUKKRwuV3iWYeW/LYMzNgaq3MaLffQ2xA==
 
 anymatch@~3.1.2:
   version "3.1.2"
@@ -309,6 +331,13 @@ fraction.js@^4.0.12:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.1.1.tgz#ac4e520473dae67012d618aab91eda09bcb400ff"
   integrity sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==
 
+framesync@^4.0.0, framesync@^4.0.1:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/framesync/-/framesync-4.1.0.tgz#69a8db3ca432dc70d6a76ba882684a1497ef068a"
+  integrity sha512-MmgZ4wCoeVxNbx2xp5hN/zPDCbLSKiDt4BbbslK7j/pM2lg5S0vhTNv1v8BCVb99JPIo6hXBFdwzU7Q4qcAaoQ==
+  dependencies:
+    hey-listen "^1.0.5"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -349,6 +378,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hey-listen@^1.0.5, hey-listen@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
+  integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
 hoist-non-react-statics@^3.0.0:
   version "3.3.2"
@@ -746,6 +780,25 @@ strict-uri-encode@^1.0.0:
   resolved "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
 
+style-value-types@^3.1.7:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-3.2.0.tgz#eb89cab1340823fa7876f3e289d29d99c92111bb"
+  integrity sha512-ih0mGsrYYmVvdDi++/66O6BaQPRPRMQHoZevNNdMMcPlP/cH28Rnfsqf1UEba/Bwfuw9T8BmIMwbGdzsPwQKrQ==
+  dependencies:
+    hey-listen "^1.0.8"
+    tslib "^1.10.0"
+
+stylefire@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.npmjs.org/stylefire/-/stylefire-7.0.3.tgz#9120ecbb084111788e0ddaa04074799750f20d1d"
+  integrity sha512-Q0l7NSeFz/OkX+o6/7Zg3VZxSAZeQzQpYomWmIpOehFM/rJNMSLVX5fgg6Q48ut2ETNKwdhm97mPNU643EBCoQ==
+  dependencies:
+    "@popmotion/popcorn" "^0.4.4"
+    framesync "^4.0.0"
+    hey-listen "^1.0.8"
+    style-value-types "^3.1.7"
+    tslib "^1.10.0"
+
 textarea-caret-ts@^4.1.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/textarea-caret-ts/-/textarea-caret-ts-4.1.1.tgz#765e39507a8efe7516586a698613c4167186513b"
@@ -762,6 +815,16 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+tslib@^1.10.0:
+  version "1.14.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tsx-dom@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/tsx-dom/-/tsx-dom-1.2.0.tgz#3ff783336be4253d11d92b4d236e24019efa8517"
+  integrity sha512-S33rksHuYv0CJXqXqN0yZ+1i3P/jLitnGWkj8x3TJGyQWfk88/kMhi1B13RguHwt4tMumiJbnQ7QgPWuJ1QlKw==
 
 typed-function@^1.1.1:
   version "1.1.1"
