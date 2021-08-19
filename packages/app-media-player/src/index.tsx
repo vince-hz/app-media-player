@@ -16,7 +16,7 @@ type State = Required<NetlessAppMediaPlayerAttributes>;
 const defaultAttributes: State = {
     type: "video",
     src: "",
-    paused: false,
+    paused: true,
 };
 
 const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
@@ -28,7 +28,7 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
             ...context.getAttributes(),
         };
 
-        let player: HTMLAudioElement | HTMLVideoElement = document.createElement(state.type);
+        let player = h(state.type, null) as HTMLAudioElement | HTMLVideoElement;
         let content = <div class={`${ns}-content`}>{player}</div>;
 
         box.mountStyles(styles);
@@ -36,8 +36,6 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
 
         player.src = state.src;
         if (!state.paused) player.play();
-
-        player.controls = true;
     },
 };
 

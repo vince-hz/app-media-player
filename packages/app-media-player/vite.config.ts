@@ -6,12 +6,12 @@ export default defineConfig(({ command, mode }) => {
 
     return {
         esbuild: {
-            jsxFactory: "h"
+            jsxFactory: "h",
         },
 
         build: {
             lib: {
-                entry: path.resolve(__dirname, "src/index.ts"),
+                entry: path.resolve(__dirname, "src/index.tsx"),
                 formats: ["es", "cjs"],
                 fileName: "main",
                 name: "NetlessAppDocsViewer",
