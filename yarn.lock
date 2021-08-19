@@ -23,10 +23,10 @@
     eventemitter3 "^4.0.7"
     stylefire "^7.0.3"
 
-"@netless/window-manager@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.npmjs.org/@netless/window-manager/-/window-manager-0.1.10.tgz#7279d73cc97963bfb79a163f6ad6cfca99f79a59"
-  integrity sha512-FK568+dLZIrIs2YDoMibvcPcn2jeaehjCM3bto/+C2ia6+FlLmFjdjzlu4kPxIA2UGGZPS3IGcfScIe8XYL9Gw==
+"@netless/window-manager@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.npmjs.org/@netless/window-manager/-/window-manager-0.1.11.tgz#3c6db52b5c2b31a9dd2c4e547e97b14e7f944f54"
+  integrity sha512-bWS87th4l0CO/MFLUQRbLtcPanx05hynXcoP9UXoiMK1ZxJADp5lRAb9+b71VXGGUmOIfE9gjyiryU4bC3f4Og==
   dependencies:
     "@netless/app-docs-viewer" "^0.1.9"
     "@netless/telebox-insider" "^0.1.5"
@@ -873,10 +873,10 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-white-web-sdk@^2.13.17:
-  version "2.13.17"
-  resolved "https://registry.npmjs.org/white-web-sdk/-/white-web-sdk-2.13.17.tgz#db120727a44668bc4657bf9f9f37f13751a5c289"
-  integrity sha512-maTRDflywNh8jcNcfk7yZndzuKQfSADHMEjcNZiNeiuYYPcXzRv3tAjXBZfR0jBoZ/Mdml5ZeGiGvifh6ZLobQ==
+white-web-sdk@^2.13.18:
+  version "2.13.18"
+  resolved "https://registry.npmjs.org/white-web-sdk/-/white-web-sdk-2.13.18.tgz#137daf5bc82c91d5fcd07074338a005d25bc5fe6"
+  integrity sha512-+6bifhfIY5HSO/12E5oB8eaemLN+GNqUPsj+AZMQhF/ER4B0d7OGX05FDsgEL0AGNVMa48Gsa7SjvokU3PauNQ==
   dependencies:
     "@netless/canvas-polyfill" "^0.0.4"
     "@netless/xml-js" "1.6.15"

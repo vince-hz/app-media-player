@@ -5,13 +5,13 @@
         "packages/*"
     ],
     "devDependencies": {
-        "@netless/window-manager": "^0.1.10",
+        "@netless/window-manager": "^0.1.11",
         "@types/node": "^16.6.2",
         "cross-env": "^7.0.3",
         "rimraf": "^3.0.2",
         "sass": "^1.38.0",
         "typescript": "^4.3.5",
         "vite": "^2.5.0",
-        "white-web-sdk": "^2.13.17"
+        "white-web-sdk": "^2.13.18"
     }
 }
