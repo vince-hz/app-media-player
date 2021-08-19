@@ -1,5 +1,8 @@
 import styles from "./style.scss?inline";
 
+import playSVG from "./icons/play.svg";
+import pauseSVG from "./icons/pause.svg";
+
 import { h } from "tsx-dom";
 import { NetlessApp } from "@netless/window-manager";
 
@@ -29,13 +32,59 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
         };
 
         let player = h(state.type, null) as HTMLAudioElement | HTMLVideoElement;
-        let content = <div class={`${ns}-content`}>{player}</div>;
+
+        let progressBar = <div class={`${ns}-current`} style={{ width: 0 }} />;
+        let indicator = <span class={`${ns}-indicator`} />;
+
+        player.addEventListener("timeupdate", () => {
+            let percent = (((100 * player.currentTime) / player.duration) | 0) + "%";
+            progressBar.style.width = percent;
+            indicator.style.left = percent;
+        });
+
+        let playBtn = (<img class={`${ns}-play-pause`} draggable={false} />) as HTMLImageElement;
+        playBtn.src = state.paused ? playSVG : pauseSVG;
+
+        let controls = (
+            <div class={`${ns}-controls`}>
+                <div class={`${ns}-progress`}>
+                    {progressBar}
+                    {indicator}
+                </div>
+                <div class={`${ns}-actions`}>{playBtn}</div>
+            </div>
+        );
+        let content = (
+            <div class={`${ns}-content`}>
+                {player}
+                {controls}
+            </div>
+        );
 
         box.mountStyles(styles);
         box.mountContent(content);
 
         player.src = state.src;
-        if (!state.paused) player.play();
+        if (!state.paused) {
+            player.play().catch(() => {
+                player.muted = true;
+                player.play();
+            });
+        }
+
+        playBtn.addEventListener("click", () => {
+            context.updateAttributes(["paused"], !state.paused);
+        });
+
+        context.emitter.on("attributesUpdate", attrs => {
+            if ((state.paused = attrs!.paused!)) {
+                player.play();
+                playBtn.src = pauseSVG;
+            } else {
+                player.pause();
+                playBtn.src = playSVG;
+            }
+        });
     },
 };
 

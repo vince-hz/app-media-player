@@ -7,8 +7,66 @@ $namespace: "netless-app-media-player";
 
     audio,
     video {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: contain;
+    }
+}
+
+.#{$namespace}-controls {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba($color: #f9f9fc, $alpha: 0.618);
+    user-select: none;
+}
+
+.#{$namespace}-progress {
+    position: relative;
+    padding: 8px;
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        display: block;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        border-radius: 9999px;
+    }
+
+    &:hover > .#{$namespace}-indicator {
+        opacity: 1;
+    }
+}
+
+.#{$namespace}-current {
+    height: 4px;
+    background-color: #121314;
+    border-radius: 9999px;
+}
+
+.#{$namespace}-indicator {
+    box-sizing: content-box;
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 9999px;
+    border: 1px solid;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.#{$namespace}-actions {
+    padding: 0 4px 5px;
+
+    img {
+        width: 22px;
+        height: 22px;
     }
 }
