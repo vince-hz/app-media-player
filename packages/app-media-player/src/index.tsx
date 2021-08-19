@@ -12,6 +12,11 @@ interface NetlessAppMediaPlayerAttributes {
     type: "audio" | "video";
     src: string;
     paused?: boolean;
+    volume?: number;
+    muted?: boolean;
+    currentTime?: number;
+    hostTime?: number;
+    loop?: boolean;
 }
 
 type State = Required<NetlessAppMediaPlayerAttributes>;
@@ -20,6 +25,11 @@ const defaultAttributes: State = {
     type: "video",
     src: "",
     paused: true,
+    volume: 1,
+    muted: false,
+    currentTime: 0,
+    hostTime: 0,
+    loop: false,
 };
 
 const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
@@ -31,42 +41,54 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
             ...context.getAttributes(),
         };
 
+        if (!state.src) {
+            throw new Error("[MediaPlayer]: Missing 'src' attribute.");
+        }
+
         let player = h(state.type, null) as HTMLAudioElement | HTMLVideoElement;
+        const updatePlayer = (state: State) => {
+            player.muted = state.muted;
+            player.volume = state.volume;
+            player.src = state.src;
+            player.currentTime = state.currentTime;
+            state.paused ? player.pause() : player.play();
+        };
+        updatePlayer(state);
 
-        let progressBar = <div class={`${ns}-current`} style={{ width: 0 }} />;
-        let indicator = <span class={`${ns}-indicator`} />;
-
+        let progressBarCurrent = <div class={`${ns}-current`} style={{ width: 0 }} />;
+        let progressBar = <div class={`${ns}-progress`}>{progressBarCurrent}</div>;
+        const updateProgressBar = (percent: number) => {
+            progressBarCurrent.style.width = Math.round(percent * 100) + "%";
+        };
+        progressBar.addEventListener("click", e => {
+            console.log(e);
+        });
         player.addEventListener("timeupdate", () => {
-            let percent = (((100 * player.currentTime) / player.duration) | 0) + "%";
-            progressBar.style.width = percent;
-            indicator.style.left = percent;
+            updateProgressBar(player.currentTime / player.duration);
         });
 
         let playBtn = (<img class={`${ns}-play-pause`} draggable={false} />) as HTMLImageElement;
-        playBtn.src = state.paused ? playSVG : pauseSVG;
+        const updatePlayBtn = (paused: boolean) => {
+            playBtn.src = paused ? playSVG : pauseSVG;
+        };
+        updatePlayBtn(state.paused);
 
-        let controls = (
-            <div class={`${ns}-controls`}>
-                <div class={`${ns}-progress`}>
-                    {progressBar}
-                    {indicator}
-                </div>
-                <div class={`${ns}-actions`}>{playBtn}</div>
-            </div>
-        );
         let content = (
             <div class={`${ns}-content`}>
                 {player}
-                {controls}
+                <div class={`${ns}-controls`}>
+                    {progressBar}
+                    <div class={`${ns}-actions`}>{playBtn}</div>
+                </div>
             </div>
         );
 
         box.mountStyles(styles);
         box.mountContent(content);
 
-        player.src = state.src;
         if (!state.paused) {
-            player.play().catch(() => {
+            player.play().catch(e => {
+                console.log("failed", e);
                 player.muted = true;
                 player.play();
             });
@@ -78,11 +100,11 @@ const NetlessAppMediaPlayer: NetlessApp<NetlessAppMediaPlayerAttributes> = {
 
         context.emitter.on("attributesUpdate", attrs => {
             if ((state.paused = attrs!.paused!)) {
-                player.play();
-                playBtn.src = pauseSVG;
-            } else {
                 player.pause();
-                playBtn.src = playSVG;
+                updatePlayBtn(state.paused);
+            } else {
+                player.play();
+                updatePlayBtn(state.paused);
             }
         });
     },

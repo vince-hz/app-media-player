@@ -23,16 +23,18 @@ $namespace: "netless-app-media-player";
     width: 100%;
     background-color: rgba($color: #f9f9fc, $alpha: 0.618);
     user-select: none;
+    cursor: pointer;
 }
 
 .#{$namespace}-progress {
     position: relative;
-    padding: 8px;
+    padding: 8px 8px 4px;
     &:before {
         content: "";
         position: absolute;
-        inset: 8px;
         display: block;
+        width: calc(100% - 16px);
+        height: 4px;
         background-color: rgba($color: #000000, $alpha: 0.2);
         border-radius: 9999px;
     }
@@ -46,20 +48,6 @@ $namespace: "netless-app-media-player";
     height: 4px;
     background-color: #121314;
     border-radius: 9999px;
-}
-
-.#{$namespace}-indicator {
-    box-sizing: content-box;
-    position: absolute;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 9999px;
-    border: 1px solid;
-    opacity: 0;
-    transition: opacity 0.2s;
 }
 
 .#{$namespace}-actions {
