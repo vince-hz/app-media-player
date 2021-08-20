@@ -25,8 +25,13 @@
         "build:dev": "vite build --mode development && yarn run types",
         "cleanup": "rimraf ./build"
     },
+    "peerDependencies": {
+        "react": ">=16",
+        "react-dom": ">=16",
+        "video.js": "^7",
+        "white-web-sdk": "^2.13.8"
+    },
     "dependencies": {
-        "debounce-fn": "^5.0.0",
-        "tsx-dom": "^1.2.0"
+        "lodash-es": "^4.17.21"
     }
 }

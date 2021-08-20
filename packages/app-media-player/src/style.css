@@ -1,0 +1,9 @@
+@import url(./components/style.css);
+@import url(./components/SeekSlider.css);
+@import url(./components/PlayerController.css);
+
+.netless-app-media-player-container {
+    display: flex;
+    position: relative;
+    height: 100%;
+}

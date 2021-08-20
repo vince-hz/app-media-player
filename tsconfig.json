@@ -8,20 +8,14 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "removeComments": false,
-        "jsx": "preserve",
-        "jsxFactory": "h",
+        "jsx": "react",
         "lib": ["ESNext", "DOM"],
         "types": ["vite/client"],
         "rootDir": ".",
         "baseUrl": ".",
         "paths": {
-            "@netless/*": [
-                "packages/*/src",
-                "node_modules/@netless/*"
-            ]
+            "@netless/*": ["packages/*/src", "node_modules/@netless/*"]
         }
     },
-    "include": [
-        "packages/*/src"
-    ]
+    "include": ["packages/*/src"]
 }
