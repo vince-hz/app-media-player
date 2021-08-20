@@ -1,6 +1,6 @@
 {
     "name": "@netless/app-media-player",
-    "version": "0.1.0",
+    "version": "0.1.0-alpha.0",
     "description": "Netless App Media Player",
     "repository": {
         "type": "git",
@@ -29,9 +29,10 @@
         "react": ">=16",
         "react-dom": ">=16",
         "video.js": "^7",
-        "white-web-sdk": "^2.13.8"
+        "white-web-sdk": "^2.13.8",
+        "@netless/window-manager": "*"
     },
-    "dependencies": {
+    "devDependencies": {
         "lodash-es": "^4.17.21"
     }
 }
