@@ -3,9 +3,9 @@ import path from "path";
 
 export default defineConfig({
     resolve: {
-        // alias: {
-        //     '@netless/app-media-player':
-        //         path.resolve(__dirname, '../app-media-player/src')
-        // }
-    },
+        alias: {
+            '@netless/app-media-player':
+                path.resolve(__dirname, '../app-media-player/src')
+        }
+    }
 });
