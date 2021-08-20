@@ -1,0 +1,11 @@
+{
+    "private": true,
+    "name": "@netless/app-todo-svelte",
+    "version": "0.1.0",
+    "dependencies": {
+        "svelte": "^3.42.1"
+    },
+    "scripts": {
+        "build": "vite build"
+    }
+}
