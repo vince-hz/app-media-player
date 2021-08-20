@@ -20,7 +20,7 @@
         "dist"
     ],
     "scripts": {
-        "types": "cross-env NODE_ENV=production tsc --declaration --emitDeclarationOnly --jsx react --esModuleInterop --outDir dist",
+        "types": "cross-env NODE_ENV=production tsc --declaration --emitDeclarationOnly --outDir dist",
         "build": "vite build && yarn run types",
         "build:dev": "vite build --mode development && yarn run types",
         "cleanup": "rimraf ./build"

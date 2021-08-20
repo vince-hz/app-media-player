@@ -1,6 +1,4 @@
-import { version } from "../package.json";
-
-export const Version = version;
-
 /** 插件 ID */
 export const Kind = "MediaPlayer";
+
+export const Version = "0.1.0";

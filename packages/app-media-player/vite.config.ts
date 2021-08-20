@@ -5,21 +5,18 @@ export default defineConfig(({ command, mode }) => {
     const isProd = mode === "production";
 
     return {
-        esbuild: {
-            jsxFactory: "h",
-        },
-
         build: {
             lib: {
                 entry: path.resolve(__dirname, "src/index.tsx"),
                 formats: ["es", "cjs"],
                 fileName: "main",
-                name: "NetlessAppDocsViewer",
+                name: "NetlessAppMediaPlayer",
             },
             sourcemap: isProd,
             outDir: "dist",
             rollupOptions: {
-                external: ["@netless/window-manager"],
+                external: ["@netless/window-manager", "react", "react-dom", "video.js"],
+                output: { exports: "named" },
             },
             minify: isProd,
         },
