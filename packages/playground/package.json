@@ -6,7 +6,7 @@
         "dev": "vite"
     },
     "dependencies": {
-        "@netless/window-manager": "^0.1.12",
+        "@netless/window-manager": "^0.1.13",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "regenerator-runtime": "^0.13.9",

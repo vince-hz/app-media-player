@@ -25,14 +25,15 @@ const NetlessAppTodo: NetlessApp<NetlessAppTodoAttributes> = {
             let a: Record<string, any> = context.getAttributes() || {};
             if (a[k] !== v) context.updateAttributes([k], v);
         };
-        app.$on("update:current", ({ detail: current }) => {
-            update("current", current);
-        });
-        app.$on("update:list", ({ detail: list }) => {
-            update("list", list);
-        });
-        context.emitter.on("attributesUpdate", ({ current = "", list = [] }: PartialAttrs = {}) => {
-            app.$set({ current, list });
+        for (const k in attrs) {
+            app.$on(`update:${k}`, ({ detail }) => {
+                update(k, detail);
+            });
+        }
+        context.emitter.on("attributesUpdate", (attrs: PartialAttrs = {}) => {
+            for (const k in attrs) {
+                app.$set({ [k]: attrs[k as keyof PartialAttrs] });
+            }
         });
         context.emitter.on("destroy", () => {
             app.$destroy();

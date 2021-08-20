@@ -5,7 +5,7 @@
         "packages/*"
     ],
     "devDependencies": {
-        "@netless/window-manager": "^0.1.12",
+        "@netless/window-manager": "^0.1.13",
         "@sveltejs/vite-plugin-svelte": "^1.0.0-next.17",
         "@types/lodash-es": "^4.17.4",
         "@types/node": "^16.6.2",

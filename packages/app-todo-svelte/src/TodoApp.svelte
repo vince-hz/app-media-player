@@ -7,18 +7,25 @@
     $: dispatch("update:current", current)
     $: dispatch("update:list", list)
 
-    function commit() {
-        list = [...list, current];
-        current = ""
+    function commit(e) {
+        if (e.key === "Enter") {
+            list = [...list, current];
+            current = ""
+        }
+    }
+
+    function remove(i) {
+        list.splice(i, 1)
+        list = [...list]
     }
 </script>
 
-<input type="text" bind:value={current} on:change={commit}>
-<ul>
+<input type="text" bind:value={current} on:keydown={commit}>
+<ol>
 {#each list as item, i}
-    <li>{i + 1}: {item}</li>
+    <li>{item} <button on:click={() => remove(i)}>X</button></li>
 {/each}
-</ul>
+</ol>
 
 <style>
     :global(.netless-todo-app-container) {
