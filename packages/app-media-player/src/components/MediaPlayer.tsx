@@ -3,10 +3,11 @@ import type { AppContext, Player, Room } from "@netless/window-manager";
 import React, { Component } from "react";
 import videojs, { VideoJsPlayer } from "video.js";
 
+import wavePNG from "./icons/wave.png";
 import { Version } from "../constants";
 import { options } from "../options";
 import { Props, Attributes, Keys } from "../types";
-import { checkWhiteWebSdkVersion, getCurrentTime, isSafari, nextFrame } from "../utils";
+import { AudioExts, checkWhiteWebSdkVersion, getCurrentTime, isSafari, nextFrame } from "../utils";
 import PlayerController from "./PlayerController";
 
 export class MediaPlayer extends Component<Props> {
@@ -75,6 +76,12 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
         return context.getAttributes();
     }
 
+    isShowingPoster() {
+        const s = this.getAttributes();
+        if (!s?.src) return true;
+        return AudioExts.some(e => s.src.endsWith(e));
+    }
+
     render() {
         if (!(this.props.room || this.props.player)) {
             return null;
@@ -93,7 +100,12 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
                 onMouseEnter={this.showController}
                 onMouseMove={this.showController}
             >
-                <div className="video-js-plugin-player" ref={this.container}></div>
+                <div className="video-js-plugin-player" ref={this.container} />
+                {this.isShowingPoster() && (
+                    <div className="video-js-plugin-poster">
+                        {s.poster && <img src={s.poster} alt="" draggable={false} />}
+                    </div>
+                )}
                 <PlayerController
                     duration={duration}
                     volume={s.volume}
@@ -107,7 +119,7 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
                     visible
                 />
                 {this.state.NoSound && (
-                    <div ref={this.setupAlert} className="videojs-plugin-muted-alert"></div>
+                    <div ref={this.setupAlert} className="videojs-plugin-muted-alert" />
                 )}
                 {this.state.MediaError && (
                     <div className="videojs-plugin-recovery-mode">

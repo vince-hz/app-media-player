@@ -39,7 +39,16 @@ sdk.joinRoom({
 
     $info.textContent = "loaded.";
 
-    $("#add-player")!.addEventListener("click", () => {
+    $("#add-audio")!.addEventListener("click", () => {
+        manager.addApp({
+            kind: NetlessAppMediaPlayer.kind,
+            attributes: <NetlessAppMediaPlayerAttributes>{
+                src: "https://beings.oss-cn-hangzhou.aliyuncs.com/test/2a90e310-1904-4a9a-8a86-9d6f3f4f8a78/%E9%99%88%E7%BB%AE%E8%B4%9E%20-%20%E5%A4%A9%E5%A4%A9%E6%83%B3%E4%BD%A0.mp3",
+                type: "audio/mp3",
+            },
+        });
+    });
+    $("#add-video")!.addEventListener("click", () => {
         manager.addApp({
             kind: NetlessAppMediaPlayer.kind,
             attributes: <NetlessAppMediaPlayerAttributes>{

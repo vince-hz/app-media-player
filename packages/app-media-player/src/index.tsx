@@ -39,7 +39,6 @@ const NetlessAppMediaPlayer: NetlessApp<Attributes> = {
         box.mountStyles(styles);
 
         const container = document.createElement("div");
-        container.id = "app-media-player";
         container.classList.add("netless-app-media-player-container");
         ReactDOM.render(<MediaPlayer context={context} />, container);
 

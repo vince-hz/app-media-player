@@ -1,7 +1,6 @@
 .vjs-p {
     display: flex;
     flex-grow: 1;
-    position: relative;
 }
 .vjs-p * {
     pointer-events: auto;
@@ -9,7 +8,22 @@
 .vjs-p.disabled * {
     pointer-events: none;
 }
-.vjs-p .videojs-plugin-close-icon,
+.vjs-p .video-js-plugin-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./icons/wave.png);
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vjs-p .video-js-plugin-poster img {
+    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.4);
+}
 .vjs-p .player-controller,
 .vjs-p .videojs-plugin-muted-alert {
     pointer-events: auto;
