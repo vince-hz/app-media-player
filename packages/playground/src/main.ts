@@ -2,10 +2,8 @@ import "@netless/window-manager/dist/style.css";
 import { WindowManager } from "@netless/window-manager";
 import { Room, WhiteWebSdk } from "white-web-sdk";
 
-import NetlessAppMediaPlayer, { setOptions } from "@netless/app-media-player";
 import type { NetlessAppMediaPlayerAttributes } from "@netless/app-media-player";
 import "video.js/dist/video-js.min.css";
-setOptions({ verbose: true });
 
 import NetlessAppTodo from "@netless/app-todo-svelte";
 import type { NetlessAppTodoAttributes } from "@netless/app-todo-svelte";
@@ -22,7 +20,6 @@ let $whiteboard = $("#whiteboard")! as HTMLDivElement;
 let $info = $("#info")! as HTMLDivElement;
 
 let sdk = new WhiteWebSdk({ appIdentifier: env.VITE_APPID });
-WindowManager.register(NetlessAppMediaPlayer);
 WindowManager.register(NetlessAppTodo);
 sdk.joinRoom({
     roomToken: env.VITE_ROOM_TOKEN,
@@ -38,7 +35,19 @@ sdk.joinRoom({
 
     $info.textContent = "loaded.";
 
-    $("#add-audio")!.addEventListener("click", () => {
+    let playerModule: typeof import("@netless/app-media-player");
+    async function initPlayerModule() {
+        if (!playerModule) {
+            playerModule = await import("@netless/app-media-player");
+            const { default: NetlessAppMediaPlayer, setOptions } = playerModule;
+            setOptions({ verbose: true });
+            WindowManager.register(NetlessAppMediaPlayer);
+        }
+        return playerModule.default;
+    }
+
+    $("#add-audio")!.addEventListener("click", async () => {
+        const NetlessAppMediaPlayer = await initPlayerModule();
         manager.addApp({
             kind: NetlessAppMediaPlayer.kind,
             attributes: <NetlessAppMediaPlayerAttributes>{
@@ -47,7 +56,8 @@ sdk.joinRoom({
             },
         });
     });
-    $("#add-video")!.addEventListener("click", () => {
+    $("#add-video")!.addEventListener("click", async () => {
+        const NetlessAppMediaPlayer = await initPlayerModule();
         manager.addApp({
             kind: NetlessAppMediaPlayer.kind,
             attributes: <NetlessAppMediaPlayerAttributes>{
@@ -56,6 +66,7 @@ sdk.joinRoom({
             },
         });
     });
+
     $("#add-todo-svelte")!.addEventListener("click", () => {
         manager.addApp({
             kind: NetlessAppTodo.kind,
