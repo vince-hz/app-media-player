@@ -1,0 +1,13 @@
+{
+    "name": "@netless/app-audio-player",
+    "version": "0.1.0",
+    "main": "dist/index.mjs",
+    "scripts": {
+        "build": "esbuild-dev build.ts"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "esbuild": "^0.12.22",
+        "svelte": "^3.42.2"
+    }
+}
