@@ -22,6 +22,6 @@ manager.addApp({
 
 ## Changelog
 
-### 0.1.0-alpha.2
+### 0.1.0-beta.0
 
 -   修复了没有权限时播放器进度条超出范围的问题。
