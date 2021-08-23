@@ -6,7 +6,7 @@
     ],
     "devDependencies": {
         "@hyrious/esbuild-dev": "^0.4.6",
-        "@netless/window-manager": "^0.1.24",
+        "@netless/window-manager": "^0.1.26",
         "@sveltejs/vite-plugin-svelte": "^1.0.0-next.19",
         "@types/lodash-es": "^4.17.4",
         "@types/node": "^16.7.1",

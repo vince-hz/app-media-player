@@ -14,7 +14,6 @@ const NetlessAppTodo: NetlessApp<NetlessAppTodoAttributes> = {
             list: [],
             ...context.getAttributes(),
         };
-        context.setAttributes(attrs);
 
         const el = document.createElement("div");
         el.classList.add("netless-todo-app-container");
@@ -24,12 +23,8 @@ const NetlessAppTodo: NetlessApp<NetlessAppTodoAttributes> = {
         const box = context.getBox();
         box.mountContent(el);
 
-        let writable = context.getIsWritable();
-        context.emitter.on("writableChange", w => {
-            writable = w;
-        });
         app.$on("update", ({ detail }: { detail: NetlessAppTodoAttributes }) => {
-            if (writable) {
+            if (context.getIsWritable()) {
                 let a: Record<string, any> = context.getAttributes()!;
                 for (let [k, v] of Object.entries(detail)) {
                     if (a[k] !== v) context.updateAttributes([k], v);

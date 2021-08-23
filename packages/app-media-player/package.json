@@ -26,13 +26,16 @@
         "cleanup": "rimraf ./build"
     },
     "peerDependencies": {
+        "@netless/window-manager": "*",
         "react": ">=16",
         "react-dom": ">=16",
         "video.js": "^7",
-        "white-web-sdk": "^2.13.8",
-        "@netless/window-manager": "*"
+        "white-web-sdk": "^2.13.8"
     },
     "devDependencies": {
-        "lodash-es": "^4.17.21"
+        "lodash-es": "^4.17.21",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "video.js": "^7.14.3"
     }
 }
