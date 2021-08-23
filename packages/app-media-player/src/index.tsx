@@ -6,22 +6,13 @@ import { MediaPlayer } from "./components/MediaPlayer";
 
 import styles from "./style.css?inline";
 
-import { Kind } from "./constants";
+import { defaultAttributes, Kind } from "./constants";
 import type { Attributes } from "./types";
 
 export { setOptions } from "./options";
 export type { MediaPlayerOptions } from "./options";
 export { Version } from "./constants";
 export type { Attributes as NetlessAppMediaPlayerAttributes };
-
-const defaultAttributes: Attributes = {
-    src: "",
-    currentTime: 0,
-    hostTime: 0,
-    muted: false,
-    paused: true,
-    volume: 1,
-};
 
 const NetlessAppMediaPlayer: NetlessApp<Attributes> = {
     kind: Kind,
@@ -33,7 +24,6 @@ const NetlessAppMediaPlayer: NetlessApp<Attributes> = {
             });
         }
         attrs = { ...defaultAttributes, ...attrs };
-        context.setAttributes(attrs);
 
         const box = context.getBox();
         box.mountStyles(styles);
