@@ -1,3 +1,1 @@
-# @netless/app-docs-viewer
-
-Viewer for docs.
+# @netless/app-media-player

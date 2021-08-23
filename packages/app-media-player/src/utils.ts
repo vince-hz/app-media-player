@@ -1,7 +1,7 @@
-import { Player, Room } from "@netless/window-manager";
-import { ImplProps } from "./components/MediaPlayer";
+import type { Player, Room } from "@netless/window-manager";
+import type { ImplProps } from "./components/MediaPlayer";
+import type { Attributes } from "./types";
 import { Version } from "./constants";
-import { Attributes } from "./types";
 
 export function checkWhiteWebSdkVersion(room: Room) {
     if (!room.calibrationTimestamp) {

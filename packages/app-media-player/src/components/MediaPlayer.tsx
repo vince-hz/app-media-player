@@ -1,12 +1,12 @@
 import type { AppContext, Player, Room } from "@netless/window-manager";
 
 import React, { Component } from "react";
-import videojs, { VideoJsPlayer } from "video.js";
+import videojs from "video.js";
+import type { VideoJsPlayer } from "video.js";
 
-import wavePNG from "./icons/wave.png";
 import { Version } from "../constants";
 import { options } from "../options";
-import { Props, Attributes, Keys } from "../types";
+import type { Props, Attributes, Keys } from "../types";
 import { AudioExts, checkWhiteWebSdkVersion, getCurrentTime, isSafari, nextFrame } from "../utils";
 import PlayerController from "./PlayerController";
 

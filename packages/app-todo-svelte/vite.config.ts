@@ -6,7 +6,14 @@ export default defineConfig(({ command, mode }) => {
     const isProd = mode === "production";
 
     return {
-        plugins: [svelte()],
+        plugins: [
+            svelte({
+                emitCss: false,
+                experimental: {
+                    useVitePreprocess: true,
+                },
+            }),
+        ],
         build: {
             lib: {
                 entry: path.resolve(__dirname, "src/index.ts"),

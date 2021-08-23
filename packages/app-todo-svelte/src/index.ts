@@ -6,34 +6,32 @@ export interface NetlessAppTodoAttributes {
     list: string[];
 }
 
-type PartialAttrs = Partial<NetlessAppTodoAttributes>;
-
 const NetlessAppTodo: NetlessApp<NetlessAppTodoAttributes> = {
     kind: "Todo",
     setup(context) {
-        const attrs = { current: "", list: [], ...context.getAttributes() };
+        const attrs: NetlessAppTodoAttributes = {
+            current: "",
+            list: [],
+            ...context.getAttributes(),
+        };
         context.setAttributes(attrs);
 
         const el = document.createElement("div");
         el.classList.add("netless-todo-app-container");
+
         const app = new TodoApp({ target: el, props: attrs });
 
         const box = context.getBox();
         box.mountContent(el);
 
-        const update = (k: string, v: any) => {
-            let a: Record<string, any> = context.getAttributes() || {};
-            if (a[k] !== v) context.updateAttributes([k], v);
-        };
-        for (const k in attrs) {
-            app.$on(`update:${k}`, ({ detail }) => {
-                update(k, detail);
-            });
-        }
-        context.emitter.on("attributesUpdate", (attrs: PartialAttrs = {}) => {
-            for (const k in attrs) {
-                app.$set({ [k]: attrs[k as keyof PartialAttrs] });
+        app.$on("update", ({ detail }: { detail: NetlessAppTodoAttributes }) => {
+            let a: Record<string, any> = context.getAttributes()!;
+            for (let [k, v] of Object.entries(detail)) {
+                if (a[k] !== v) context.updateAttributes([k], v);
             }
+        });
+        context.emitter.on("attributesUpdate", attrs => {
+            attrs && app.$set(attrs);
         });
         context.emitter.on("destroy", () => {
             app.$destroy();

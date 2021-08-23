@@ -7,7 +7,7 @@ import { MediaPlayer } from "./components/MediaPlayer";
 import styles from "./style.css?inline";
 
 import { Kind } from "./constants";
-import { Attributes } from "./types";
+import type { Attributes } from "./types";
 
 export { setOptions } from "./options";
 export type { MediaPlayerOptions } from "./options";

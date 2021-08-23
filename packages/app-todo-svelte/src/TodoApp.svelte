@@ -1,23 +1,22 @@
-<script>
+<script lang="ts">
     export let current = "";
-    export let list = [];
+    export let list: string[] = []
 
-    import { createEventDispatcher } from "svelte";
-    const dispatch = createEventDispatcher()
-    $: dispatch("update:current", current)
-    $: dispatch("update:list", list)
-
-    function commit(e) {
+    function commit(e: KeyboardEvent) {
         if (e.key === "Enter") {
-            list = [...list, current];
+            list = [...list, current]
             current = ""
         }
     }
 
-    function remove(i) {
+    function remove(i: number) {
         list.splice(i, 1)
         list = [...list]
     }
+
+    import { createEventDispatcher } from "svelte"
+    const dispatch = createEventDispatcher()
+    $: dispatch("update", { current, list })
 </script>
 
 <input type="text" bind:value={current} on:keydown={commit}>

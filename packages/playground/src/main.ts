@@ -2,14 +2,13 @@ import "@netless/window-manager/dist/style.css";
 import { WindowManager } from "@netless/window-manager";
 import { Room, WhiteWebSdk } from "white-web-sdk";
 
-import NetlessAppMediaPlayer, {
-    NetlessAppMediaPlayerAttributes,
-    setOptions,
-} from "@netless/app-media-player";
+import NetlessAppMediaPlayer, { setOptions } from "@netless/app-media-player";
+import type { NetlessAppMediaPlayerAttributes } from "@netless/app-media-player";
 import "video.js/dist/video-js.min.css";
 setOptions({ verbose: true });
 
-import NetlessAppTodo, { NetlessAppTodoAttributes } from "../../app-todo-svelte/src";
+import NetlessAppTodo from "@netless/app-todo-svelte";
+import type { NetlessAppTodoAttributes } from "@netless/app-todo-svelte";
 
 declare global {
     var room: Room;
