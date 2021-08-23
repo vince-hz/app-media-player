@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        canvas {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" controls crossorigin="anonymous" src="http://localhost:5000/%E9%99%88%E7%BB%AE%E8%B4%9E%20-%20%E5%A4%A9%E5%A4%A9%E6%83%B3%E4%BD%A0.mp3"></audio>
+    <br>
+    <canvas id="stage"></canvas>
+    <script>
+        var audio = document.getElementById('audio')
+        var canvas = document.getElementById('stage')
+        /** @type {CanvasRenderingContext2D} */
+        var stage = canvas.getContext('2d')
+            stage.fillStyle = "black"
+        var handler = 0
+        var ctx
+        var ana
+        var source
+
+        audio.addEventListener('play', start)
+        audio.addEventListener('pause', stop)
+
+        function stop() {
+            cancelAnimationFrame(handler);
+        }
+
+        function start() {
+            ctx ||= new AudioContext()
+            ana ||= ctx.createAnalyser()
+            source ||= ctx.createMediaElementSource(audio)
+
+            // beep test for ios
+            var oscillator = ctx.createOscillator();
+            oscillator.frequency.value = 1;
+            oscillator.connect(ctx.destination);
+            oscillator.start(0);
+            oscillator.stop(0);
+
+            source.connect(ana)
+            source.connect(ctx.destination)
+
+            ana.fftSize = 1 << 15
+            var bufferLength = ana.frequencyBinCount
+            var data = new Uint8Array(bufferLength)
+            var step = Math.ceil(bufferLength / 100)
+
+            function renderFrame() {
+                handler = requestAnimationFrame(renderFrame)
+                ana.getByteFrequencyData(data)
+
+                stage.clearRect(0, 0, canvas.width, canvas.height)
+                stage.beginPath()
+                stage.moveTo(canvas.width, canvas.height);
+                for (let i = 0; i < 100; i++) {
+                    let val = data[i];
+                    let x = canvas.width * (100 - i) / 100
+                    let h = canvas.height * (255 - val) / 255
+                    stage.lineTo(x, h)
+                }
+                stage.lineTo(0, canvas.height)
+                stage.fill()
+            }
+
+            renderFrame()
+        }
+    </script>
+</body>
+</html>
