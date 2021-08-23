@@ -1,5 +1,3 @@
-<style>
-    :global(.hello) {
-        color: red
-    }
-</style>
+<div class="hello">
+    
+</div>

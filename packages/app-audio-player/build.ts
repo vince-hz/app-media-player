@@ -31,16 +31,16 @@ async function share(args: esbuild.OnLoadArgs) {
 const sveltePlugin: Plugin = {
     name: "svelte",
     setup({ onResolve, onLoad }) {
-        // onLoad({ filter: /\.svelte$/, namespace: "file" }, async args => {
-        //     let { source, filename, convertMessage } = await share(args);
-        //     try {
-        //         let { js, warnings } = svelte.compile(source, { filename });
-        //         let contents = js.code + `//# sourceMappingURL=` + js.map.toUrl();
-        //         return { contents, warnings: warnings.map(convertMessage) };
-        //     } catch (e) {
-        //         return { errors: [convertMessage(e)] };
-        //     }
-        // });
+        onLoad({ filter: /\.svelte$/, namespace: "file" }, async args => {
+            let { source, filename, convertMessage } = await share(args);
+            try {
+                let { js, warnings } = svelte.compile(source, { filename, css: false });
+                let contents = js.code + `//# sourceMappingURL=` + js.map.toUrl();
+                return { contents, warnings: warnings.map(convertMessage) };
+            } catch (e) {
+                return { errors: [convertMessage(e)] };
+            }
+        });
 
         onResolve({ filter: /\.svelte\?style$/, namespace: "file" }, args => {
             return {

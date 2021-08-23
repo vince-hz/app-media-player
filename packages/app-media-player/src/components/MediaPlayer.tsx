@@ -73,7 +73,18 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
 
     getAttributes() {
         const { context } = this.props;
-        return context.getAttributes();
+        let s = context.getAttributes();
+        if (!s) return;
+        // 如果 s.currentTime > player.duration()，说明线上的状态大概率是错了
+        if (this.player) {
+            let currentTime = getCurrentTime(s, this.props);
+            let duration = this.player.duration();
+            if (!s.paused && currentTime > duration) {
+                s = { ...s, currentTime: 0, paused: true };
+                this.resetPlayer();
+            }
+        }
+        return s;
     }
 
     isShowingPoster() {
