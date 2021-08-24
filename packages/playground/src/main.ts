@@ -40,7 +40,7 @@ sdk.joinRoom({
     window.manager = room.getInvisiblePlugin(WindowManager.kind) as WindowManager;
 
     room.setScenePath("/init");
-    WindowManager.mount(room, $whiteboard, undefined);
+    WindowManager.mount(room, $whiteboard, undefined, { debug: true });
 
     $info.textContent = "loaded.";
 

@@ -33,6 +33,11 @@ const NetlessAppMediaPlayer: NetlessApp<Attributes> = {
         ReactDOM.render(<MediaPlayer context={context} />, container);
 
         box.mountContent(container);
+
+        context.emitter.on("destroy", () => {
+            console.log("[MediaPlayer]: destroy");
+            ReactDOM.unmountComponentAtNode(container);
+        });
     },
 };
 

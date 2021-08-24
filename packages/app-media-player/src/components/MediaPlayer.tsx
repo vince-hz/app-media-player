@@ -193,6 +193,7 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
     }
 
     componentWillUnmount() {
+        this.debug("unmount");
         this.props.context.emitter.off("attributesUpdate", this.syncPlayerWithAttributes);
         this.player?.dispose();
         clearInterval(this.syncPlayerTimer);
