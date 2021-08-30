@@ -13,7 +13,7 @@ export interface MediaPlayerOptions {
     /**
      * 同步全局状态的时间间隔（毫秒）
      * 每隔这段时间同步一次全局状态
-     * @default 500
+     * @default 1000
      */
     syncInterval: number;
 
@@ -42,7 +42,7 @@ export interface MediaPlayerOptions {
 
 export const defaultOptions: MediaPlayerOptions = {
     currentTimeMaxError: 1,
-    syncInterval: 500,
+    syncInterval: 1000,
     retryInterval: 15000,
     verbose: false,
     log: console.log.bind(console),

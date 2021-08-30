@@ -58,6 +58,7 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
     syncPlayerTimer = 0;
     retryCount = 0;
     decreaseRetryTimer = 0;
+    noSoundSyncCount = 0;
 
     constructor(props: ImplProps) {
         super(props);
@@ -179,8 +180,11 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
 
     resetPlayer = () => {
         this.player?.autoplay(false);
-        this.debug(">>> ended", { paused: true, currentTime: 0 });
-        this.isEnabled() && this.props.plugin.putAttributes({ paused: true, currentTime: 0 });
+        // 如果此时处于异常状态, 此 ended 事件不会同步到其他端
+        if (!this.state.NoSound) {
+            this.debug(">>> ended", { paused: true, currentTime: 0 });
+            this.isEnabled() && this.props.plugin.putAttributes({ paused: true, currentTime: 0 });
+        }
     };
 
     componentDidMount() {
@@ -207,6 +211,11 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
         const player = this.player;
         if (!player) return;
 
+        // 如果此时处于异常状态，增加容错 (每 8 个 interval 同步一次)
+        if (this.state.NoSound && (this.noSoundSyncCount += 1) % 8 !== 0) {
+            return;
+        }
+
         if (player.paused() !== s.paused) {
             this.debug("<<< paused -> %o", s.paused);
             if (s.paused) {
@@ -228,9 +237,14 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
         }
 
         const currentTime = getCurrentTime(s, this.props);
+        let maxError = options.currentTimeMaxError;
+        // 如果此时处于异常状态，增加同步时间的容错 (3 倍)
+        if (this.state.NoSound) {
+            maxError *= 3;
+        }
         if (currentTime > player.duration()) {
             this.resetPlayer();
-        } else if (Math.abs(player.currentTime() - currentTime) > options.currentTimeMaxError) {
+        } else if (Math.abs(player.currentTime() - currentTime) > maxError) {
             this.debug("<<< currentTime -> %o", currentTime);
             player.currentTime(currentTime);
         }
@@ -320,6 +334,7 @@ class MediaPlayerImpl extends Component<ImplProps, State> {
         this.debug("initializing videojs() ...");
         const player = videojs(video);
         this.player = player;
+        (window as any).player = player;
 
         player.one("loadedmetadata", this.gracefullyUpdate);
 

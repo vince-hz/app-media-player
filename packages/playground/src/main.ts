@@ -40,7 +40,7 @@ sdk.joinRoom({
     window.manager = room.getInvisiblePlugin(WindowManager.kind) as WindowManager;
 
     room.setScenePath("/init");
-    WindowManager.mount(room, $whiteboard, undefined, { debug: true });
+    WindowManager.mount({ room, container: $whiteboard, debug: true });
 
     $info.textContent = "loaded.";
 
@@ -53,11 +53,20 @@ sdk.joinRoom({
             },
         });
     });
+    // $("#add-video")!.addEventListener("click", async () => {
+    //     manager.addApp({
+    //         kind: NetlessAppMediaPlayer.kind,
+    //         attributes: <NetlessAppMediaPlayerAttributes>{
+    //             src: "https://beings.oss-cn-hangzhou.aliyuncs.com/test/aaa59a55-81ff-45e8-8185-fd72c695def4/1606277539701637%E7%9A%84%E5%89%AF%E6%9C%AC.mp4",
+    //             type: "video/mp4",
+    //         },
+    //     });
+    // });
     $("#add-video")!.addEventListener("click", async () => {
         manager.addApp({
             kind: NetlessAppMediaPlayer.kind,
             attributes: <NetlessAppMediaPlayerAttributes>{
-                src: "https://beings.oss-cn-hangzhou.aliyuncs.com/test/aaa59a55-81ff-45e8-8185-fd72c695def4/1606277539701637%E7%9A%84%E5%89%AF%E6%9C%AC.mp4",
+                src: "https://agora-apaas.oss-accelerate.aliyuncs.com/cloud-disk/f488493d1886435f963dfb3d95984fd4/uu24/95655f6f1b2b844cc13c8514966ef02c.mp4",
                 type: "video/mp4",
             },
         });
